@@ -6,20 +6,17 @@ function PageSearchModel() {
         setQuery: function(q) {
             query = q;
             results.length = 0;
-            FB.api("/search?q=" + q + "&type=page", function (pages) {
+            FB.api("/search?q=" + q + "&type=page&fields=name,picture,about,category,link", function (pages) {
                 if (pages && !pages.error) {
-                    pages.data.forEach(function(element) {
-                        FB.api("/" + element.id + "?fields=name,picture,about,category,link", function (page) {
-                            FB.api("/me/likes/" + element.id , function (like) {
-                                if (like.length) {
-                                    page.like = true;
-                                }
-                                results.push(page);
-                                if (results.length == pages.data.length)
-                                    subject.notifyObservers();
-                            })
-                        });
-                        
+                    pages.data.forEach(function(page) {
+                        FB.api("/me/likes/" + page.id , function (like) {
+                            if (like.length) {
+                                page.like = true;
+                            }
+                            results.push(page);
+                            if (results.length == pages.data.length)
+                                subject.notifyObservers();
+                        })                      
                     }, this);
                 }   
             });

@@ -220,3 +220,6 @@ html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Makes sure that th
 ul.tabs li.active a{
     color:#3B5998;  
 }
+.tab_container {
+    clear: both;
+}
