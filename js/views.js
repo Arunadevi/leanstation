@@ -29,6 +29,7 @@ function PageSearchView(model) {
         notify: function() {
             const html = templateFnc({ view_list: getData() });
             DOM.results.html(html);
+            FB.XFBML.parse();
          }
     };          
 }

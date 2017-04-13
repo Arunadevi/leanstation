@@ -5,6 +5,7 @@ function PageSearchModel() {
     return {
         setQuery: function(q) {
             query = q;
+            results.length = 0;
             FB.api("/search?q=" + q + "&type=page", function (pages) {
                 if (pages && !pages.error) {
                     pages.data.forEach(function(element) {
@@ -14,7 +15,8 @@ function PageSearchModel() {
                                     page.like = true;
                                 }
                                 results.push(page);
-                                subject.notifyObservers();
+                                if (results.length == pages.data.length)
+                                    subject.notifyObservers();
                             })
                         });
                         
@@ -22,12 +24,7 @@ function PageSearchModel() {
                 }   
             });
         },
-        clearQuery: function() {
-            query = '';
-        },
-        clearResults: function() {
-            results.length = 0;
-        },
+
         getResults: function() {
             return results;
         },
