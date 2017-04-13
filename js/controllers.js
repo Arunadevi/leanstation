@@ -6,18 +6,25 @@ function PageSearchCtrl(view, model) {
     });
     DOM.input.keyup((ev) => {
         if (ev.which == 13 || ev.keyCode == 13) {
-            DOM.input.blur();
+           model.setQuery(DOM.input.val());
         }
     });
     return {
-        notify: function() {
-            const that = this;
-            // checkbox handlers
-            DOM.results.find('.input').each(function(index) {
-                $(this).click(() => {
-                    that.model.favourite(index, $(this).is(':checked')); 
-                });
-            });
+        notify: function () {
+
         }
-    };
+    }
+}
+
+function FavoritesCtrl(view, model) {
+    const DOM = view.getDOM();
+    // input handler
+    DOM.tab.click(() => {
+        model.setResults();
+    });
+    return {
+        notify: function () {
+            
+        }
+    }
 }

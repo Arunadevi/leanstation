@@ -33,3 +33,34 @@ function PageSearchView(model) {
          }
     };          
 }
+
+function FavoritesView(model) {
+    const DOM = {
+        tab: $('#tabname-2'),
+        favorites: $('#favorites')
+    },
+    templateFnc = Handlebars.compile($('#favorites-template').html());
+
+    function getData() {
+        return model.getResults().map(function(elem, index) {
+            return {
+                about: elem.about,
+                category: elem.category,
+                id: elem.id,
+                link: elem.link,
+                name: elem.name,
+                picture: elem.picture
+            };
+        });
+    }
+    return {
+        getDOM: function() {
+            return DOM;
+        },
+        notify: function() {
+            const html = templateFnc({ view_list: getData() });
+            DOM.favorites.html(html);
+         }
+    };          
+}
+

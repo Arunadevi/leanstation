@@ -31,6 +31,9 @@ fb:login-button {
 td.left {
     width: 10%;
 }
+.favorite td.left {
+    width: 80%;
+}
 td.middle {
     width: 70%;
 }

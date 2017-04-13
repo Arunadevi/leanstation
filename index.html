@@ -21,7 +21,7 @@
             <div class="login">
                 <div id="fb-button">
                     
-                    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+                    <fb:login-button scope="public_profile,email,user_likes" onlogin="checkLoginState();">
                     </fb:login-button>
                 </div>
 
@@ -31,7 +31,7 @@
             <div class="maincontent">
             <ul class="tabs">
                 <li><a href="#tab1">Page Search</a></li>
-                <li><a href="#tab2">Favorites</a></li>
+                <li><a href="#tab2" id="tabname-2">Favorites</a></li>
             </ul>
  
             <div class="tab_container">
@@ -47,7 +47,8 @@
                 </div><!--End Tab 1-->
                 
                 <div id="tab2" class="tab_content">
-                    showing favorites
+                    <div id="favorites">
+                    </div>
                 </div><!--End Tab 2 -->
             
             </div><!--End Tab Container -->
@@ -58,8 +59,7 @@
 
 <script id="pagesearch-template" type="text/x-handlebars-template">
     {{#each view_list}}
-        <table class="post {{checked}}">
-            <!--<input class="input" type="checkbox" {{checked}}>-->
+        <table class="post ">
             <tr>
                 <td class="left">
                     <div class="fb-like" 
@@ -70,6 +70,24 @@
                     </div>
                 </td>
             <td class="middle">
+                <h3><a href="#">{{name}}</a></h3>
+                <span class="postInfo"><a href="#">{{category}}</a></span>
+                <p>{{about}}</p>
+            </td>
+            <td class="right">
+                <img class="picture" src="{{picture.data.url}}"></img>
+            </td>
+            </tr>
+            <span class="line"></span>
+        </table>
+    {{/each}}
+</script>
+
+<script id="favorites-template" type="text/x-handlebars-template">
+    {{#each view_list}}
+        <table class="post favorite">
+            <tr>
+            <td class="left">
                 <h3><a href="#">{{name}}</a></h3>
                 <span class="postInfo"><a href="#">{{category}}</a></span>
                 <p>{{about}}</p>
