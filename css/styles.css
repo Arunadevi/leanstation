@@ -14,10 +14,10 @@ padding-top:20px;
     display: none;
 }
 .right{
-float:right;     /* A class I always add to float items right */
+    float:right;
 }
 .left{
-float:left;      /* To float items left*/
+    float:left;
 }
 .login {
     margin-bottom: 10px;

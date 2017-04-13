@@ -1,5 +1,5 @@
 function SearchSubject() {
-    var observers = [];
+    const observers = [];
     return {    
         add: function(item) {
             observers.push(item);
@@ -16,7 +16,7 @@ function SearchSubject() {
 }
 
 function FavoritesSubject() {
-    var observers = [];
+    const observers = [];
     return {    
         add: function(item) {
             observers.push(item);

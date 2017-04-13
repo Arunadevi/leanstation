@@ -1,6 +1,5 @@
 function PageSearchCtrl(view, model) {
     const DOM = view.getDOM();
-    // input handler
     DOM.button.click(() => {
         model.setQuery(DOM.input.val());
     });
@@ -11,20 +10,17 @@ function PageSearchCtrl(view, model) {
     });
     return {
         notify: function () {
-
         }
     }
 }
 
 function FavoritesCtrl(view, model) {
     const DOM = view.getDOM();
-    // input handler
     DOM.tab.click(() => {
         model.setResults();
     });
     return {
         notify: function () {
-            
         }
     }
 }

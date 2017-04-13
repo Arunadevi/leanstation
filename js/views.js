@@ -31,7 +31,7 @@ function PageSearchView(model) {
             DOM.results.html(html);
             FB.XFBML.parse();
          }
-    };          
+    };
 }
 
 function FavoritesView(model) {
@@ -61,6 +61,6 @@ function FavoritesView(model) {
             const html = templateFnc({ view_list: getData() });
             DOM.favorites.html(html);
          }
-    };          
+    };
 }
 
